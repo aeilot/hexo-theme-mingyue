@@ -1,0 +1,46 @@
+<% const section=theme.section || {}; const postsConfig=(theme.home && theme.home.posts) ? theme.home.posts : {}; const
+  postsLimit=postsConfig.limit || 8; const postsList=site.posts.sort('date', -1).toArray().slice(0, postsLimit); const
+  bio=theme.bio || {}; const footerConfig=section.footer || {}; const
+  footerText=footerConfig.title || '未启新卷' ; const showFooter=footerConfig.enabled !==false; %>
+
+  <div class="home-page">
+    <main class="home-canvas">
+      <section class="home-reading" aria-label="posts">
+        <% postsList.forEach(function(post){ %>
+          <article class="home-post-column">
+            <h2 class="home-post-title"><a href="<%= url_for(post.path) %>">
+                <%= format_bracket_title(post.title) %>
+              </a></h2>
+            <% if (postsConfig.show_excerpt !==false) { %>
+              <p class="home-post-excerpt">
+                <%= build_excerpt(post, postsConfig.excerpt_length || 120) %>
+              </p>
+              <% } %>
+                <% if (postsConfig.show_date !==false) { %>
+                  <time class="home-post-date" datetime="<%= date_xml(post.date) %>">
+                    <%= format_cn_ganzhi_date(post.date) %>
+                  </time>
+                  <% } %>
+                    <% if (postsConfig.show_tags !==false && post.tags && post.tags.length) { %>
+                      <p class="home-post-tags">
+                        <% post.tags.forEach(function(tag, i){ %>
+                          <a href="<%= url_for(tag.path) %>">
+                            <%= format_bracket_title(tag.name) %>
+                          </a>
+                          <%= i < post.tags.length - 1 ? ' ' : '' %>
+                            <% }) %>
+                      </p>
+                      <% } %>
+          </article>
+          <% }) %>
+      </section>
+
+      <%- partial('partial/title-panel', {
+        panel_title: config.title,
+        panel_desc: bio.description,
+        panel_class: 'home-title-panel--home',
+        show_nav: true
+      }) %>
+    </main>
+
+  </div>

@@ -1,0 +1,14 @@
+<%- partial('partial/helpers') %>
+<%
+const postsConfig = (theme.home && theme.home.posts) ? theme.home.posts : {};
+const postsLimit = postsConfig.limit || 8;
+const postsList = site.posts.sort('date', -1).toArray().slice(0, postsLimit);
+%>
+<section class="column section-column posts-column">
+  <h2 class="column-title"><%= format_bracket_title(__('home.posts')) %></h2>
+  <div class="post-list">
+    <% postsList.forEach(function(post){ %>
+      <%- partial('partial/post-card', { post: post, options: postsConfig }) %>
+    <% }); %>
+  </div>
+</section>

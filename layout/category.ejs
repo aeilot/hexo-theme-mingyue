@@ -1,0 +1,25 @@
+<%- partial('partial/helpers') %>
+<%
+const categoryPosts = page.posts ? page.posts.toArray() : [];
+const categoryTitle = page.category && page.category.name ? page.category.name : page.category;
+%>
+<div class="mingyue-shell category-shell">
+  <section class="column section-column posts-column">
+    <h1 class="column-title"><%= format_bracket_title(categoryTitle || __('category.a')) %></h1>
+    <div class="post-list">
+      <% categoryPosts.forEach(function(post){ %>
+        <%- partial('partial/post-card', {
+          post: post,
+          options: {
+            show_excerpt: true,
+            show_date: true,
+            show_tags: true,
+            excerpt_length: 120
+          }
+        }) %>
+      <% }) %>
+    </div>
+  </section>
+
+  <%- partial('partial/bio') %>
+</div>

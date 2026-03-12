@@ -1,0 +1,18 @@
+<%- partial('partial/helpers') %>
+<%
+const bio = theme.bio || {};
+const links = bio.links || [];
+%>
+<section class="column bio-column">
+  <h1 class="column-title"><%= format_bracket_title(bio.title || config.title) %></h1>
+  <% if (bio.description) { %>
+    <p class="bio-description"><%= bio.description %></p>
+  <% } %>
+  <% if (links.length) { %>
+    <nav class="bio-links" aria-label="bio-links">
+      <% links.forEach(function(link){ %>
+        <a class="bio-link" href="<%= url_for(link.url) %>"><%= format_bracket_title(link.name) %></a>
+      <% }); %>
+    </nav>
+  <% } %>
+</section>

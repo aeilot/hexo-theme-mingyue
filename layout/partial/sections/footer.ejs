@@ -1,0 +1,12 @@
+<%- partial('partial/helpers') %>
+<%
+const footer = (theme.section && theme.section.footer) ? theme.section.footer : {};
+const footerTitle = footer.title || '未启新卷';
+const customText = (theme.footer && theme.footer.custom_text) ? theme.footer.custom_text : '';
+%>
+<section class="column section-column footer-column" aria-label="reserved-footer">
+  <h2 class="column-title"><%= format_bracket_title(footerTitle) %></h2>
+  <% if (customText) { %>
+    <p class="footer-text"><%= customText %></p>
+  <% } %>
+</section>

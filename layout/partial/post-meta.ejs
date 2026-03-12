@@ -1,0 +1,18 @@
+<%
+const metaPost = post || page;
+const metaOptions = options || {};
+const showDate = typeof metaOptions.show_date === 'boolean' ? metaOptions.show_date : true;
+const showTags = typeof metaOptions.show_tags === 'boolean' ? metaOptions.show_tags : true;
+%>
+<div class="post-meta">
+  <% if (showDate && metaPost.date) { %>
+    <time datetime="<%= date_xml(metaPost.date) %>"><%= format_cn_ganzhi_date(metaPost.date) %></time>
+  <% } %>
+  <% if (showTags && metaPost.tags && metaPost.tags.length) { %>
+    <span class="meta-tags">
+      <% metaPost.tags.forEach(function(tag, idx){ %>
+        <a href="<%= url_for(tag.path) %>"><%= format_bracket_title(tag.name) %></a><%= idx < metaPost.tags.length - 1 ? ' ' : '' %>
+      <% }) %>
+    </span>
+  <% } %>
+</div>

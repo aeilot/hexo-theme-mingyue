@@ -1,0 +1,20 @@
+.mingyue-page {
+  font-variant-east-asian: traditional;
+}
+
+.post-content p,
+.post-content li,
+.post-content blockquote {
+  margin: 0;
+}
+
+.post-content p + p,
+.post-content li + li,
+.post-content blockquote + p {
+  margin-block-start: 0.85em;
+}
+
+.cj-punc {
+  color: var(--color-accent-red);
+  font-weight: 500;
+}

@@ -1,0 +1,15 @@
+<%- partial('partial/helpers') %>
+  <% const archivePosts=page.posts ? page.posts.toArray() : site.posts.sort('date', -1).toArray(); %>
+    <div class="mingyue-shell archive-shell unified-shell">
+      <section class="column section-column posts-column unified-content">
+        <!-- <h1 class="column-title"><%= format_bracket_title(__('archive.a')) %></h1> -->
+        <div class="post-list">
+          <% archivePosts.forEach(function(post){ %>
+            <%- partial('partial/post-card', { post: post, options: { show_excerpt: true, show_date: true, show_tags:
+              true, excerpt_length: 120 } }) %>
+              <% }) %>
+        </div>
+      </section>
+
+      <%- partial('partial/title-panel', { panel_title: __('archive.a'), show_nav: true }) %>
+    </div>

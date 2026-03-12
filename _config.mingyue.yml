@@ -1,0 +1,57 @@
+section:
+  posts: true
+  tags: false
+  footer:
+    enabled: true
+    title: "未启新卷"
+
+home:
+  posts:
+    limit: 8
+    show_excerpt: true
+    show_date: true
+    show_tags: false
+    excerpt_length: 120
+  tags:
+    limit: 24
+
+bio:
+  title: "明月"
+  description: "古调虽自爱，今人多不弹。"
+  links:
+    - name: "文摘"
+      url: "/"
+    - name: "归档"
+      url: "/archives/"
+  social_links:
+    - name: "github"
+      label: "GitHub"
+      url: "https://github.com/"
+      enabled: true
+    - name: "telegram"
+      label: "Telegram"
+      url: "https://github.com/"
+      enabled: true
+    - name: "twitter"
+      label: "Twitter"
+      url: "https://github.com/"
+      enabled: true
+
+
+style:
+  accent_red: "#a31f1f"
+  paper_bg: "#f7f1e3"
+  ink_text: "#2d241c"
+  border_ink: "#8b7355"
+
+footer:
+  custom_text: ""
+
+content:
+  code:
+    enabled: true
+  math:
+    enabled: true
+    engine: "katex"
+  preview_dialog:
+    enabled: true

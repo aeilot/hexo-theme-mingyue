@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+
+<%- partial('partial/head') %>
+
+<body class="mingyue-page <%= page.layout || 'default' %>">
+  <main class="mingyue-main">
+    <%- body %>
+  </main>
+  <%- js('js/punctuation.js') %>
+  <%- js('js/content-enhance.js') %>
+</body>
+
+</html>

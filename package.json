@@ -1,0 +1,17 @@
+{
+  "name": "hexo-theme-mingyue",
+  "version": "0.1.0",
+  "description": "A Chinese classical vertical-reading Hexo theme.",
+  "keywords": [
+    "hexo",
+    "hexo-theme",
+    "chinese",
+    "vertical-layout"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourname/hexo-theme-mingyue.git"
+  }
+}

@@ -1,0 +1,58 @@
+<%- partial('partial/helpers') %>
+<%
+const bio = theme.bio || {};
+const links = bio.links || [];
+const socialLinks = (bio.social_links || []).filter(function(link) {
+  return link && link.url && link.enabled !== false;
+});
+const panelTitle = typeof panel_title !== 'undefined' ? panel_title : config.title;
+const panelDesc = typeof panel_desc === 'string' ? panel_desc : bio.description;
+const panelClass = typeof panel_class !== 'undefined' ? panel_class : '';
+const showNav = typeof show_nav !== 'undefined' ? show_nav !== false : true;
+
+function normalizeSocialName(value) {
+  return ((value || '') + '').trim().toLowerCase();
+}
+
+function socialIconClass(name) {
+  const key = normalizeSocialName(name);
+  if (key === 'github') return 'fa-brands fa-github';
+  if (key === 'x' || key === 'twitter') return 'fa-brands fa-x-twitter';
+  if (key === 'mastodon') return 'fa-brands fa-mastodon';
+  if (key === 'telegram') return 'fa-brands fa-telegram';
+  if (key === 'weibo') return 'fa-brands fa-weibo';
+  if (key === 'zhihu') return 'fa-solid fa-comment';
+  return 'fa-solid fa-link';
+}
+%>
+<aside class="home-title-panel <%= panelClass %>">
+  <% if (showNav && (links.length || socialLinks.length)) { %>
+    <nav class="home-title-nav" aria-label="home-title-nav">
+      <% if (links.length) { %>
+        <div class="home-title-nav-main">
+          <% links.forEach(function(link){ %>
+            <a class="home-title-nav-link" href="<%= url_for(link.url) %>">
+              <%= format_bracket_title(link.name) %>
+            </a>
+          <% }) %>
+        </div>
+      <% } %>
+      <% if (socialLinks.length) { %>
+        <div class="home-title-social" aria-label="social-links">
+          <% socialLinks.forEach(function(link){ %>
+            <% const socialName = link.label || link.name || 'link'; %>
+            <a class="home-title-social-link" href="<%= url_for(link.url) %>" aria-label="<%= socialName %>" title="<%= socialName %>">
+              <i class="<%= socialIconClass(link.name || socialName) %>" aria-hidden="true"></i>
+            </a>
+          <% }) %>
+        </div>
+      <% } %>
+    </nav>
+  <% } %>
+  <div class="home-title-inner">
+    <h1 class="home-book-title"><%= format_bracket_title(panelTitle) %></h1>
+    <% if (panelDesc) { %>
+      <p class="home-book-desc"><%= panelDesc %></p>
+    <% } %>
+  </div>
+</aside>

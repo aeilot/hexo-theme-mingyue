@@ -1,0 +1,27 @@
+<%- partial('partial/helpers') %>
+<%
+const cardPost = post;
+const cardOptions = options || {};
+const excerptLength = cardOptions.excerpt_length || 120;
+const showExcerpt = cardOptions.show_excerpt !== false;
+const showDate = cardOptions.show_date !== false;
+const showTags = cardOptions.show_tags !== false;
+%>
+<article class="post-card">
+  <h3 class="post-title">
+    <a href="<%= url_for(cardPost.path) %>"><%= format_bracket_title(cardPost.title) %></a>
+  </h3>
+
+  <% if (showExcerpt) { %>
+    <p class="post-excerpt"><%= build_excerpt(cardPost, excerptLength) %></p>
+  <% } %>
+
+  <%- partial('partial/post-meta', {
+    post: cardPost,
+    options: {
+      show_date: showDate,
+      show_tags: showTags
+    },
+    format_bracket_title: format_bracket_title
+  }) %>
+</article>

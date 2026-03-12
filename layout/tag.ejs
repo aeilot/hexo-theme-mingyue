@@ -1,0 +1,29 @@
+<%- partial('partial/helpers') %>
+<%
+const taggedPosts = page.posts ? page.posts.toArray() : [];
+const tagTitle = page.tag && page.tag.name ? page.tag.name : page.tag;
+const panelTitle = `${__('tag.a')} ${tagTitle || ''}`.trim();
+%>
+<div class="mingyue-shell tag-shell unified-shell">
+  <section class="column section-column posts-column unified-content">
+    <h1 class="column-title"><%= format_bracket_title(tagTitle || __('tag.a')) %></h1>
+    <div class="post-list">
+      <% taggedPosts.forEach(function(post){ %>
+        <%- partial('partial/post-card', {
+          post: post,
+          options: {
+            show_excerpt: true,
+            show_date: true,
+            show_tags: true,
+            excerpt_length: 120
+          }
+        }) %>
+      <% }) %>
+    </div>
+  </section>
+
+  <%- partial('partial/title-panel', {
+    panel_title: panelTitle,
+    show_nav: true
+  }) %>
+</div>

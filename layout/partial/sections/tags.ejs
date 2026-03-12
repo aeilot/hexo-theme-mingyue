@@ -1,0 +1,14 @@
+<%- partial('partial/helpers') %>
+<%
+const tagsConfig = (theme.home && theme.home.tags) ? theme.home.tags : {};
+const tagsLimit = tagsConfig.limit || 24;
+const tagsList = site.tags.sort('length', -1).toArray().slice(0, tagsLimit);
+%>
+<section class="column section-column tags-column">
+  <h2 class="column-title"><%= format_bracket_title(__('home.tags')) %></h2>
+  <div class="tags-list">
+    <% tagsList.forEach(function(tag){ %>
+      <a class="tag-item" href="<%= url_for(tag.path) %>"><%= format_bracket_title(tag.name) %> <span class="tag-count">(<%= tag.length %>)</span></a>
+    <% }) %>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<%
+function format_bracket_title(input) {
+  const raw = ((input || '') + '').trim();
+  if (!raw) return '「无题」';
+  if (raw.startsWith('「') && raw.endsWith('」')) return raw;
+  return `「${raw}」`;
+}
+
+function build_excerpt(post, limit) {
+  if (post.excerpt && post.excerpt.length) {
+    return strip_html(post.excerpt);
+  }
+  if (post.description && post.description.length) {
+    return strip_html(post.description);
+  }
+  return truncate(strip_html(post.content || ''), {length: limit || 120});
+}
+%>

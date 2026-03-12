@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    <% if (is_home()) { %>
+      <%= config.title %>
+    <% } else { %>
+      <%= page.title ? page.title + ' | ' + config.title : config.title %>
+    <% } %>
+  </title>
+  <% if (config.description) { %>
+    <meta name="description" content="<%= config.description %>">
+  <% } %>
+  <% const style = theme.style || {}; %>
+  <% const content = theme.content || {}; %>
+  <% const mathConfig = content.math || {}; %>
+  <% const mathEnabled = mathConfig.enabled !== false; %>
+  <% const mathEngine = mathConfig.engine || 'katex'; %>
+  <% const contentJson = JSON.stringify(content).replace(/</g, '\\u003c'); %>
+  <style>
+    :root {
+      <% if (style.accent_red) { %>--color-accent-red: <%= style.accent_red %>;<% } %>
+      <% if (style.paper_bg) { %>--color-paper-bg: <%= style.paper_bg %>;<% } %>
+      <% if (style.ink_text) { %>--color-ink-text: <%= style.ink_text %>;<% } %>
+      <% if (style.border_ink) { %>--color-border-ink: <%= style.border_ink %>;<% } %>
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <% if (mathEnabled && mathEngine === 'katex') { %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <% } %>
+  <script>window.__MINGYUE_CONTENT_CONFIG = <%- contentJson %>;</script>
+  <%- css('css/main.css') %>
+</head>
