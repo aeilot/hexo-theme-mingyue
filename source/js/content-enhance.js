@@ -27,6 +27,39 @@
     return false;
   }
 
+  function collectScrollTargets() {
+    var selectors = ['.unified-shell', '.home-canvas'];
+    var seen = [];
+
+    selectors.forEach(function (selector) {
+      toArray(document.querySelectorAll(selector)).forEach(function (element) {
+        if (seen.indexOf(element) === -1) {
+          seen.push(element);
+        }
+      });
+    });
+
+    return seen;
+  }
+
+  function autoScrollToEntry(element) {
+    var maxScrollLeft = element.scrollWidth - element.clientWidth;
+    if (maxScrollLeft <= 0) return;
+
+    element.scrollLeft = maxScrollLeft;
+  }
+
+  function initializeEntryAutoScroll() {
+    var targets = collectScrollTargets();
+    if (!targets.length) return;
+
+    window.requestAnimationFrame(function () {
+      targets.forEach(function (element) {
+        autoScrollToEntry(element);
+      });
+    });
+  }
+
   function decorateWesternText(container) {
     if (!westernEnabled) return;
 
@@ -73,6 +106,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    initializeEntryAutoScroll();
+
     var containers = document.querySelectorAll('.post-content');
     if (!containers.length) return;
     toArray(containers).forEach(function (container) {
