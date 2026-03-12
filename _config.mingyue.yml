@@ -21,6 +21,8 @@ bio:
   links:
     - name: "文摘"
       url: "/"
+    - name: "关于"
+      url: "/about/"
     - name: "归档"
       url: "/archives/"
   social_links:
@@ -48,10 +50,5 @@ footer:
   custom_text: ""
 
 content:
-  code:
-    enabled: true
-  math:
-    enabled: true
-    engine: "katex"
-  preview_dialog:
-    enabled: true
+  sideways:
+    western_enabled: true

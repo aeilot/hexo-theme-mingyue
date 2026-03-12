@@ -13,9 +13,6 @@
   <% } %>
   <% const style = theme.style || {}; %>
   <% const content = theme.content || {}; %>
-  <% const mathConfig = content.math || {}; %>
-  <% const mathEnabled = mathConfig.enabled !== false; %>
-  <% const mathEngine = mathConfig.engine || 'katex'; %>
   <% const contentJson = JSON.stringify(content).replace(/</g, '\\u003c'); %>
   <style>
     :root {
@@ -26,10 +23,6 @@
     }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <% if (mathEnabled && mathEngine === 'katex') { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <% } %>
   <script>window.__MINGYUE_CONTENT_CONFIG = <%- contentJson %>;</script>
   <%- css('css/main.css') %>
 </head>

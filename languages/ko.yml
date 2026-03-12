@@ -1,0 +1,12 @@
+home:
+  posts: "게시글"
+  tags: "태그"
+
+archive:
+  a: "아카이브"
+
+tag:
+  a: "태그"
+
+category:
+  a: "카테고리"

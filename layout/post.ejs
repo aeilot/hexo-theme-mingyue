@@ -1,5 +1,12 @@
 <%- partial('partial/helpers') %>
 <div class="mingyue-shell post-shell">
+  <%- partial('partial/title-panel', {
+    panel_title: config.title,
+    panel_desc: (theme.bio && theme.bio.description) ? theme.bio.description : '',
+    panel_class: 'home-title-panel--post',
+    show_nav: true
+  }) %>
+
   <article class="column post-column">
     <h1 class="column-title post-page-title"><%= format_bracket_title(page.title) %></h1>
     <%- partial('partial/post-meta', {
@@ -11,6 +18,4 @@
       <%- page.content %>
     </div>
   </article>
-
-  <%- partial('partial/bio') %>
 </div>

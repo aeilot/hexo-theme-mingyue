@@ -133,6 +133,7 @@
 }
 
 .post-shell {
+  flex-direction: row-reverse;
   min-height: calc(100dvh - 3.2rem);
   max-height: calc(100dvh - 3.2rem);
   overflow-x: auto;
@@ -145,8 +146,13 @@
   overflow: visible;
 }
 
-.post-shell .bio-column {
+.post-shell .bio-column,
+.post-shell .home-title-panel {
   flex: 0 0 auto;
+}
+
+.post-shell .home-title-panel--post {
+  width: min(18vw, 220px);
 }
 
 @media (max-width: 900px) {
@@ -201,6 +207,11 @@
   .footer-column,
   .section-column,
   .post-column {
+    width: auto;
+    min-width: 170px;
+  }
+
+  .post-shell .home-title-panel--post {
     width: auto;
     min-width: 170px;
   }

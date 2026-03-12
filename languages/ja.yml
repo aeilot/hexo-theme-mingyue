@@ -1,0 +1,12 @@
+home:
+  posts: "記事"
+  tags: "タグ"
+
+archive:
+  a: "アーカイブ"
+
+tag:
+  a: "タグ"
+
+category:
+  a: "カテゴリー"
