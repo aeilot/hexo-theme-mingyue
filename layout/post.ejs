@@ -1,5 +1,5 @@
 <%- partial('partial/helpers') %>
-<div class="mingyue-shell post-shell">
+<div class="mingyue-shell post-shell unified-shell">
   <%- partial('partial/title-panel', {
     panel_title: config.title,
     panel_desc: (theme.bio && theme.bio.description) ? theme.bio.description : '',
@@ -7,7 +7,7 @@
     show_nav: true
   }) %>
 
-  <article class="column post-column">
+  <article class="column post-column unified-content">
     <h1 class="column-title post-page-title"><%= format_bracket_title(page.title) %></h1>
     <%- partial('partial/post-meta', {
       post: page,

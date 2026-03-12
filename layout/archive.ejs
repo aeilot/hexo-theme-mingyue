@@ -1,7 +1,7 @@
 <%- partial('partial/helpers') %>
   <% const archivePosts=page.posts ? page.posts.toArray() : site.posts.sort('date', -1).toArray(); %>
-    <div class="mingyue-shell archive-shell unified-shell">
-      <section class="column section-column posts-column unified-content">
+    <div class="mingyue-shell archive-shell listing-shell unified-shell">
+      <section class="column section-column posts-column listing-content unified-content">
         <!-- <h1 class="column-title"><%= format_bracket_title(__('archive.a')) %></h1> -->
         <div class="post-list">
           <% archivePosts.forEach(function(post){ %>
@@ -11,5 +11,10 @@
         </div>
       </section>
 
-      <%- partial('partial/title-panel', { panel_title: __('archive.a'), show_nav: true }) %>
+      <%- partial('partial/title-panel', {
+        panel_title: config.title,
+        panel_desc: (theme.bio && theme.bio.description) ? theme.bio.description : '',
+        panel_class: 'home-title-panel--post',
+        show_nav: true
+      }) %>
     </div>

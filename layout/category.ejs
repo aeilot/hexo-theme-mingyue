@@ -3,8 +3,8 @@
 const categoryPosts = page.posts ? page.posts.toArray() : [];
 const categoryTitle = page.category && page.category.name ? page.category.name : page.category;
 %>
-<div class="mingyue-shell category-shell">
-  <section class="column section-column posts-column">
+<div class="mingyue-shell category-shell listing-shell unified-shell">
+  <section class="column section-column posts-column listing-content unified-content">
     <h1 class="column-title"><%= format_bracket_title(categoryTitle || __('category.a')) %></h1>
     <div class="post-list">
       <% categoryPosts.forEach(function(post){ %>
@@ -21,5 +21,10 @@ const categoryTitle = page.category && page.category.name ? page.category.name :
     </div>
   </section>
 
-  <%- partial('partial/bio') %>
+  <%- partial('partial/title-panel', {
+    panel_title: config.title,
+    panel_desc: (theme.bio && theme.bio.description) ? theme.bio.description : '',
+    panel_class: 'home-title-panel--post',
+    show_nav: true
+  }) %>
 </div>

@@ -4,8 +4,8 @@
   footerText=footerConfig.title || '未启新卷' ; const showFooter=footerConfig.enabled !==false; %>
 
   <div class="home-page">
-    <main class="home-canvas">
-      <section class="home-reading" aria-label="posts">
+    <main class="home-canvas unified-shell">
+      <section class="home-reading unified-content" aria-label="posts">
         <% postsList.forEach(function(post){ %>
           <article class="home-post-column">
             <h2 class="home-post-title"><a href="<%= url_for(post.path) %>">
@@ -38,7 +38,7 @@
       <%- partial('partial/title-panel', {
         panel_title: config.title,
         panel_desc: bio.description,
-        panel_class: 'home-title-panel--home',
+        panel_class: 'home-title-panel--post',
         show_nav: true
       }) %>
     </main>

@@ -1,4 +1,5 @@
 .mingyue-main {
+  --mingyue-main-padding: 1.6rem;
   padding: 1.6rem;
 }
 
@@ -33,22 +34,25 @@
 
 .home-reading {
   --home-post-column-width: 84px;
-  --home-post-column-gap: 18px;
+  --home-post-column-gap: 22px;
+  --home-post-edge-padding: 14px;
   --home-post-column-step: calc(var(--home-post-column-width) + var(--home-post-column-gap));
   flex: 1;
   display: flex;
   flex-direction: row-reverse;
   gap: var(--home-post-column-gap);
-  padding-inline: calc(var(--home-post-column-gap) * 0.5);
+  padding-inline: var(--home-post-edge-padding);
   border: 1px solid rgba(139, 115, 85, 0.45);
   background:
-    repeating-linear-gradient(to right,
+    linear-gradient(to right,
       rgba(139, 115, 85, 0.14) 0,
       rgba(139, 115, 85, 0.14) 1px,
       transparent 1px,
-      transparent var(--home-post-column-step)),
+      transparent 100%),
     rgba(255, 255, 255, 0.28);
-  background-position-x: calc(var(--home-post-column-gap) * 0.5);
+  background-size: var(--home-post-column-step) 100%, auto;
+  background-position: var(--home-post-edge-padding) 0, 0 0;
+  background-repeat: repeat, repeat;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -58,6 +62,7 @@
   text-orientation: mixed;
   display: flex;
   flex-direction: column;
+  flex: 0 0 auto;
   gap: 0.9rem;
   min-height: 100%;
   padding: 0.85rem 0.75rem;
@@ -90,6 +95,8 @@
 }
 
 .unified-shell {
+  --unified-aside-width: min(18vw, 220px);
+  --unified-content-min-width: max(0px, calc(100dvw - (var(--mingyue-main-padding) * 2) - var(--unified-aside-width) - var(--block-gap)));
   flex-direction: row;
   min-height: calc(100dvh - 3.2rem);
   max-height: calc(100dvh - 3.2rem);
@@ -98,10 +105,26 @@
 }
 
 .unified-content {
-  min-width: 0;
-  flex: 1 1 auto;
+  flex: 1 0 var(--unified-content-min-width);
+  min-width: var(--unified-content-min-width);
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.unified-shell .home-title-panel {
+  width: var(--unified-aside-width);
+  flex: 0 0 auto;
+}
+
+.section-column.listing-content {
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: var(--unified-content-min-width);
+  overflow: visible;
+}
+
+.section-column.listing-content .post-list {
+  width: max-content;
 }
 
 .column {
@@ -141,8 +164,8 @@
 }
 
 .post-shell .post-column {
-  flex: 0 0 auto;
-  min-width: max(72vh, 680px);
+  flex: 1 0 var(--unified-content-min-width);
+  min-width: var(--unified-content-min-width);
   overflow: visible;
 }
 
@@ -151,12 +174,17 @@
   flex: 0 0 auto;
 }
 
-.post-shell .home-title-panel--post {
-  width: min(18vw, 220px);
+@media (max-width: 1200px) {
+  .home-reading {
+    --home-post-column-width: 76px;
+    --home-post-column-gap: 18px;
+    --home-post-edge-padding: 12px;
+  }
 }
 
 @media (max-width: 900px) {
   .mingyue-main {
+    --mingyue-main-padding: 1rem;
     padding: 1rem;
   }
 
@@ -166,7 +194,7 @@
   }
 
   .home-canvas {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .home-title-panel {
@@ -176,10 +204,14 @@
 
   .home-reading {
     min-height: 0;
+    --home-post-column-width: 68px;
+    --home-post-column-gap: 16px;
+    --home-post-edge-padding: 10px;
   }
 
   .home-post-column {
-    width: 72px;
+    gap: 0.75rem;
+    padding-inline: 0.6rem;
   }
 
   .mingyue-shell {
@@ -190,11 +222,15 @@
   }
 
   .unified-shell {
+    --unified-aside-width: 170px;
+    --unified-content-min-width: max(220px, calc(100dvw - (var(--mingyue-main-padding) * 2) - var(--unified-aside-width) - var(--block-gap)));
+    flex-direction: row;
     min-height: calc(100dvh - 2rem);
     max-height: calc(100dvh - 2rem);
   }
 
   .post-shell {
+    flex-direction: row-reverse;
     min-height: calc(100dvh - 2rem);
     max-height: calc(100dvh - 2rem);
   }
@@ -211,8 +247,30 @@
     min-width: 170px;
   }
 
-  .post-shell .home-title-panel--post {
-    width: auto;
-    min-width: 170px;
+  .unified-content {
+    flex-basis: var(--unified-content-min-width);
+    min-width: var(--unified-content-min-width);
+  }
+
+  .section-column.listing-content {
+    flex-basis: auto;
+  }
+
+  .unified-shell .home-title-panel {
+    width: var(--unified-aside-width);
+    min-width: var(--unified-aside-width);
+  }
+}
+
+@media (max-width: 600px) {
+  .home-reading {
+    --home-post-column-width: 62px;
+    --home-post-column-gap: 14px;
+    --home-post-edge-padding: 8px;
+  }
+
+  .unified-shell {
+    --unified-aside-width: 152px;
+    --unified-content-min-width: max(208px, calc(100dvw - (var(--mingyue-main-padding) * 2) - var(--unified-aside-width) - var(--block-gap)));
   }
 }
