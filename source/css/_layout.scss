@@ -153,6 +153,12 @@
   border-radius: 0;
 }
 
+.post-column.unified-content {
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: var(--unified-content-min-width);
+}
+
 .footer-column {
   width: min(10vw, 140px);
 }
@@ -232,8 +238,14 @@
   }
 
   .section-column.listing-content,
-  .home-reading.unified-content {
+  .home-reading.unified-content,
+  .post-column.unified-content {
     flex-basis: auto;
+  }
+
+  .post-column.unified-content {
+    width: max-content;
+    min-width: var(--unified-content-min-width);
   }
 
   .unified-shell .home-title-panel {
