@@ -27,4 +27,6 @@ const categoryTitle = page.category && page.category.name ? page.category.name :
     panel_class: 'home-title-panel--post',
     show_nav: true
   }) %>
+
+  <%- partial('partial/pager', { pager: page }) %>
 </div>

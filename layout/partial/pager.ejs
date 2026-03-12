@@ -1,0 +1,28 @@
+<% const pagerState=build_pager_state(typeof pager !=='undefined' ? pager : page); %>
+  <% if (pagerState) { %>
+    <nav class="listing-pager" aria-label="listing-pagination">
+      <% if (pagerState.next_link) { %>
+        <a class="listing-pager__control" href="<%= url_for(pagerState.next_link) %>" aria-label="next-page">
+          <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
+        </a>
+        <% } else { %>
+          <span class="listing-pager__control is-placeholder" aria-hidden="true">
+            <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
+          </span>
+          <% } %>
+
+            <span class="listing-pager__label">
+              <%= pagerState.current_label %>
+            </span>
+
+            <% if (pagerState.prev_link) { %>
+              <a class="listing-pager__control" href="<%= url_for(pagerState.prev_link) %>" aria-label="previous-page">
+                <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+              </a>
+              <% } else { %>
+                <span class="listing-pager__control is-placeholder" aria-hidden="true">
+                  <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+                </span>
+                <% } %>
+    </nav>
+    <% } %>

@@ -1,5 +1,5 @@
 <% const section=theme.section || {}; const postsConfig=(theme.home && theme.home.posts) ? theme.home.posts : {}; const
-  postsLimit=postsConfig.limit || 8; const postsList=site.posts.sort('date', -1).toArray().slice(0, postsLimit); const
+  postsLimit=postsConfig.limit || 8; const postsList=page.posts ? page.posts.toArray() : site.posts.sort('date', -1).toArray().slice(0, postsLimit); const
   bio=theme.bio || {}; const footerConfig=section.footer || {}; const
   footerText=footerConfig.title || '未启新卷' ; const showFooter=footerConfig.enabled !==false; %>
 
@@ -43,4 +43,5 @@
       }) %>
     </main>
 
+    <%- partial('partial/pager', { pager: page }) %>
   </div>

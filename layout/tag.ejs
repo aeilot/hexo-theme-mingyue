@@ -27,4 +27,6 @@ const tagTitle = page.tag && page.tag.name ? page.tag.name : page.tag;
     panel_class: 'home-title-panel--post',
     show_nav: true
   }) %>
+
+  <%- partial('partial/pager', { pager: page }) %>
 </div>

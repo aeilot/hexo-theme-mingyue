@@ -142,6 +142,67 @@
   writing-mode: vertical-lr;
 }
 
+.listing-pager {
+  position: fixed;
+  left: calc(var(--mingyue-main-padding) + 0.15rem);
+  bottom: calc(var(--mingyue-main-padding) + 0.15rem);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.55rem;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  border: 1px solid rgba(139, 115, 85, 0.48);
+  background: rgba(247, 241, 227, 0.9);
+  box-shadow: 0 8px 20px rgba(45, 36, 28, 0.08);
+}
+
+.listing-pager__control,
+.listing-pager__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.15rem;
+  color: var(--color-accent-red);
+  line-height: 1;
+}
+
+.listing-pager__control {
+  font-size: 1rem;
+}
+
+.listing-pager__control:hover {
+  color: color-mix(in srgb, var(--color-accent-red) 82%, #000 18%);
+}
+
+.listing-pager__control.is-placeholder {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.listing-pager__label {
+  font-family: var(--font-serif-reading);
+  font-size: 0.98rem;
+  letter-spacing: 0.14em;
+}
+
+@media (max-width: 600px) {
+  .listing-pager {
+    gap: 0.4rem;
+    padding: 0.24rem 0.45rem;
+  }
+
+  .listing-pager__control,
+  .listing-pager__label {
+    min-width: 1rem;
+  }
+
+  .listing-pager__label {
+    font-size: 0.9rem;
+  }
+}
+
 .home-footer-text {
   text-align: center;
   font-size: 1.06rem;
