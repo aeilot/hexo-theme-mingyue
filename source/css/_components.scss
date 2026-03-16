@@ -34,7 +34,10 @@
 
 .home-post-title {
   margin: 0;
-  font-size: 1.5rem;
+  width: var(--home-track-step);
+  font-size: 1.42rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .home-post-title a:hover {
@@ -46,12 +49,18 @@
 .home-post-tags {
   margin: 0;
   color: rgba(45, 36, 28, 0.86);
-  font-size: 1rem;
-  line-height: 2.18;
+  font-size: 0.98rem;
+  line-height: 2.02;
+  overflow-wrap: anywhere;
+}
+
+.home-post-excerpt {
+  width: calc(var(--home-track-step) * 3);
 }
 
 .home-post-date,
 .home-post-tags {
+  width: var(--home-track-step);
   color: var(--color-muted);
   font-size: 0.95rem;
 }
